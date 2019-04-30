@@ -68,6 +68,9 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent YES
 
+# Menu bar: show date in the clock
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
@@ -77,6 +80,12 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Swipe between full-screen apps with 4 fingers
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+
+# Mission control with 4 fingers
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
 
 
 # Increase sound quality for Bluetooth headphones/headsets
