@@ -5,7 +5,7 @@ export EDITOR=vim
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git adb colored-man-pages jump alias-tips zsh-syntax-highlighting sublime atom)
+plugins=(git adb colored-man-pages jump zsh-syntax-highlighting sublime)
 
 DEFAULT_USER=$(whoami)
 
@@ -23,3 +23,7 @@ fpath=($HOME/.zsh/gradle-completion $fpath)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ## add support for ctrl+o to open selected file in VS Code
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+
+# Git in English, please
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
