@@ -1,0 +1,33 @@
+Configuration:
+
+
+https://medium.com/swlh/power-up-your-terminal-using-oh-my-zsh-iterm2-c5a03f73a9fb
+
+
+5. Set zsh as the default terminal environment
+	
+	a. Go to iTerm2 preferences.
+	b. Head to Profiles -> General.
+	c. Paste /bin/zsh in the Command textbox and restart iTerm2.
+
+6. Install themes
+	
+	Download the zip file from (https://github.com/mbadolato/iTerm2-Color-Schemes) and import all the files in iTerm2
+	under schemes folder in the zip file.
+
+7. Install Powerline fonts
+	
+	These fonts will make your terminal fonts look better.
+	Copy paste the following in your terminal, restart your terminal and choose your preferred fonts (powerline ones).
+
+	```
+		git clone https://github.com/powerline/fonts.git --depth=1
+		cd fonts
+		./install.sh
+		cd ..
+		rm -rf fonts
+	```
+
+My settings:
+Theme: Argonaut
+Font: Source Code Pro for Powerline (14 pt)
