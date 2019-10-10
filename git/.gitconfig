@@ -88,6 +88,7 @@
 	# Discard the local branch and reset it to the remote tracked one. Useful for updating rebased branches.
 	fenix = "!f() { git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD) | xargs -I {} git reset --hard {}; }; f"
 	pr = "!f() { git pushr && ~/dotfiles/git/github-pull-request.sh; }; f"
+	compare = "!f() { git pushr && ~/dotfiles/git/github-compare.sh; }; f"
 
 [push]
 	default = simple
