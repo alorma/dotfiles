@@ -36,7 +36,6 @@
 	ci = commit
 	cim = commit -m
 	st = status
-	br = branch
 	cp = cherry-pick
 	graph = log --graph --pretty=oneline --abbrev-commit
 	tags = tag -l
@@ -50,6 +49,8 @@
         roomba = "!f() { git localprune; }; f"
 	# Amends last commit with the index skipping the message editting
 	amend = commit --amend --no-edit
+	# Show local branches ordered by last commit date (thanks to https://twitter.com/viktorklang/status/1214898430964838400):
+	br = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
 	# Commits current changes with a "WIP" message
 	wip = commit -a -m "WIP"
 	# Soft resets last commit (reverses the command wip)
