@@ -33,6 +33,7 @@
 [alias]
 	## SHORT ALIASES
 	co = checkout
+	sw = switch
 	ci = commit
 	cim = commit -m
 	st = status
@@ -43,6 +44,8 @@
 	remotes = remote -v
 
 	## SIMPLE COMMANDS
+	# Show local branches ordered by last commit date (thanks to https://twitter.com/viktorklang/status/1214898430964838400):
+	brs = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
 	# Destroys all tracked and untracked changes
 	fire = "!f() { git reset --hard; git clean -f -d; }; f"
 	# Deletes local merged branches (bclean) and branches remote references to deleted branches
