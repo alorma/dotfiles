@@ -17,3 +17,6 @@ if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:/Users/bernat.borras//dev/flutter/bin"
