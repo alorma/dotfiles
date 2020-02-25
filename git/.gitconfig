@@ -1,6 +1,6 @@
 [user]
 	name = Bernat Borrás
-	email = bernat.borras@schibsted.com
+	email = bernat.borras@adevinta.com
 
 [core]
 	excludefile = ~/.gitignore
