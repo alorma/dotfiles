@@ -72,3 +72,13 @@ function androidAnimationsSlow() {
   adb shell settings put global animator_duration_scale 5.0
   echo "Done!"
 }
+
+function androidTouchPointerOn() {
+  adb shell content insert --uri content://settings/system --bind name:s:show_touches --bind value:i:1
+  echo done
+}
+
+function androidTouchPointerOff() {
+  adb shell content insert --uri content://settings/system --bind name:s:show_touches --bind value:i:0
+  echo done
+}
