@@ -82,3 +82,9 @@ function androidTouchPointerOff() {
   adb shell content insert --uri content://settings/system --bind name:s:show_touches --bind value:i:0
   echo done
 }
+
+function androidAppInfo() {
+  readonly package=${1:?"The package must be specified."}
+  adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS package:$package
+  echo "Opening..."
+}
