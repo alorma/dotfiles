@@ -1,6 +1,7 @@
 [user]
 	name = Bernat Borrás
 	email = bernat.borras@adevinta.com
+	signingKey = B6DFEA6FB0615740
 
 [core]
 	excludefile = ~/.gitignore
