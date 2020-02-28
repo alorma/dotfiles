@@ -35,6 +35,7 @@
 	## SHORT ALIASES
 	co = checkout
 	sw = switch
+	commit = commit -S
 	ci = commit
 	cim = commit -m
 	st = status
