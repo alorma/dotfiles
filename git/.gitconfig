@@ -36,8 +36,8 @@
 	co = checkout
 	sw = switch
 	commit = commit -S
-	ci = commit
-	cim = commit -m
+	ci = commit -S 
+	cim = commit -S -m
 	st = status
 	cp = cherry-pick
 	graph = log --graph --pretty=oneline --abbrev-commit
