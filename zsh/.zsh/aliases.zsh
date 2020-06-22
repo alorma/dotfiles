@@ -88,3 +88,9 @@ function androidAppInfo() {
   adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS package:$package
   echo "Opening..."
 }
+
+function openDeepLink() {
+  readonly url=${1:?"The url must be specified."}
+  adb shell am start -a android.intent.action.VIEW -d $url
+  echo "Opening..."
+}
