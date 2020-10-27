@@ -20,4 +20,5 @@ fi
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:/Users/bernat.borras//dev/flutter/bin"
+export PATH="$PATH:/Users/bernat.borras//dev/bin"
 export PATH="$PATH:/Users/bernat.borras/Library/Android/sdk/tools/bin"
