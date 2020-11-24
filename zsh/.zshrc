@@ -22,3 +22,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:/Users/bernat.borras//dev/flutter/bin"
 export PATH="$PATH:/Users/bernat.borras//dev/bin"
 export PATH="$PATH:/Users/bernat.borras/Library/Android/sdk/tools/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/bernat.borras/.sdkman"
+[[ -s "/Users/bernat.borras/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/bernat.borras/.sdkman/bin/sdkman-init.sh"
