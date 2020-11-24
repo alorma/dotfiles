@@ -33,7 +33,7 @@
 
 [alias]
 	## SHORT ALIASES
-	co = checkout
+	#co = checkout # Disabled, so I'm forced to get used to "sw"
 	sw = switch
 	commit = commit -S
 	ci = commit -S 
@@ -77,10 +77,10 @@
 	localprune = "!f() { git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done; }; f"
 	# Pushes the current branch to a new remote branch in origin and track it
 	pushr = "!f() { git rev-parse --abbrev-ref HEAD | xargs git push -u origin; }; f"
+	# Pulls the main branch and leaves you in the current branch
+	pullmain = "!f() { git switch main && git pull && git switch -; }; f"
 	# Pulls the master branch and leaves you in the current branch
-	pullmaster = "!f() { git checkout master && git pull && git checkout -; }; f"
-	# Pulls the master branch and leaves you in the current branch
-	pullmain = "!f() { git checkout main && git pull && git checkout -; }; f"
+	pullmaster = "!f() { git switch master && git pull && git switch -; }; f"
 	# Pulls the master branch and rebases the current branch on top of it
 	rebmaster = "!f() { git pullmaster && git rebase master; }; f"
 	# Pulls the main branch and rebases the current branch on top of it
