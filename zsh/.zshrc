@@ -26,3 +26,9 @@ export PATH="$PATH:/Users/bernat.borras/Library/Android/sdk/tools/bin"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/bernat.borras/.sdkman"
 [[ -s "/Users/bernat.borras/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/bernat.borras/.sdkman/bin/sdkman-init.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bernat.borras/dev/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc'; fi
