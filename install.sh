@@ -47,13 +47,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # zsh gradle completion
 git clone git://github.com/eriwen/gradle-completion ~/.zsh/gradle-completion
 
-# Download powerlevel9k oh-my-zsh theme if not exists, update otherwise
-[ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ] && \
-  # exists
-  git -C ~/.oh-my-zsh/custom/themes/powerlevel9k pull || \
-  # doesn't exist
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-
 # Powerline fonts
 # clone
 git clone https://github.com/powerline/fonts.git

@@ -1,7 +1,7 @@
 [user]
 	name = Bernat Borrás
 	email = bernat.borras@adevinta.com
-	signingKey = B6DFEA6FB0615740
+	signingkey = E011DF5B
 
 [core]
 	excludefile = ~/.gitignore
@@ -122,3 +122,5 @@
 	required = true
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true

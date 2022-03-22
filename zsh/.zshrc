@@ -35,3 +35,5 @@ if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc' ]; then .
 
 #DISABLE android emulator audio
 export QEMU_AUDIO_DRV=none
+
+source ~/.git-prompt.sh

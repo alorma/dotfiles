@@ -2,8 +2,7 @@
 export SHELL=/bin/zsh
 export EDITOR=vim
 
-#ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="robbyrussell"
 
 plugins=(git adb colored-man-pages jump zsh-syntax-highlighting sublime)
 
