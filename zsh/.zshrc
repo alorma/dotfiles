@@ -32,3 +32,6 @@ if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc'; fi
+
+#DISABLE android emulator audio
+export QEMU_AUDIO_DRV=none
