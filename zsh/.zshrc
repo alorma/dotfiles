@@ -38,6 +38,6 @@ export QEMU_AUDIO_DRV=none
 
 source ~/.git-prompt.sh
 
-plugins=(git zsh-syntax-highlighting git-prompt)
+plugins=(zsh-syntax-highlighting git git-prompt)
 
 export PATH=/opt/homebrew/bin:$PATH
