@@ -2,9 +2,9 @@
 export SHELL=/bin/zsh
 export EDITOR=vim
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git adb colored-man-pages jump zsh-syntax-highlighting sublime)
+plugins=(git git-prompt adb colored-man-pages jump zsh-syntax-highlighting sublime)
 
 DEFAULT_USER=$(whoami)
 
