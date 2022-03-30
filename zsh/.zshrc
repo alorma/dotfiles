@@ -37,3 +37,7 @@ if [ -f '/Users/bernat.borras/dev/google-cloud-sdk/completion.zsh.inc' ]; then .
 export QEMU_AUDIO_DRV=none
 
 source ~/.git-prompt.sh
+
+plugins=(git zsh-syntax-highlighting git-prompt)
+
+export PATH=/opt/homebrew/bin:$PATH
