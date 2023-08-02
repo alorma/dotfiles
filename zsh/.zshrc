@@ -51,3 +51,8 @@ if [ -f '/Users/bernat.borras/Downloads/google-cloud-sdk/path.zsh.inc' ]; then .
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/bernat.borras/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bernat.borras/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+android_screenshot() {
+ adb exec-out screencap -p > screenshot.png
+ mv -f screenshot.png ~/Desktop/screenshot.png
+}
