@@ -56,3 +56,4 @@ android_screenshot() {
  adb exec-out screencap -p > screenshot.png
  mv -f screenshot.png ~/Desktop/screenshot.png
 }
+
