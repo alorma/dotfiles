@@ -57,5 +57,6 @@ android_screenshot() {
  mv -f screenshot.png ~/Desktop/screenshot.png
 }
 
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+export PATH="$PATH:/usr/bin/ruby"
 
