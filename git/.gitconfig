@@ -1,7 +1,7 @@
 [user]
 	name = Bernat Borrás
 	email = bernat.borras@adevinta.com
-	signingkey = E011DF5B
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDEjpFpS9qi4axwS/DryiiM0udWrQnCP4a7/OkFzt+eH
 
 [core]
 	excludefile = ~/.gitignore
@@ -124,3 +124,7 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
