@@ -52,9 +52,18 @@ if [ -f '/Users/bernat.borras/Downloads/google-cloud-sdk/path.zsh.inc' ]; then .
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/bernat.borras/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bernat.borras/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-android_screenshot() {
+function android_screenshot() {
  adb exec-out screencap -p > screenshot.png
  mv -f screenshot.png ~/Desktop/screenshot.png
+}
+
+function androidTalkBackToggle(){
+  output=$(adb shell settings get secure enabled_accessibility_services)
+  if [[ "$output" == "null" ]]; then
+    adb shell settings put secure enabled_accessibility_services com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService
+  else
+    adb shell settings put secure enabled_accessibility_services null
+  fi
 }
 
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
