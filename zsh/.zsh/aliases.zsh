@@ -72,3 +72,14 @@ function openDeepLink() {
   adb shell am start -a android.intent.action.VIEW -d $url
   echo "Opening..."
 }
+
+
+function androidNavigationGestures() {
+  adb shell cmd overlay enable com.android.internal.systemui.navbar.gestural
+  echo "Navigation by gestures..."
+}
+
+function androidNavigationButtons() {
+  adb shell cmd overlay enable com.android.internal.systemui.navbar.threebutton
+  echo "Navigation by buttons..."
+}
