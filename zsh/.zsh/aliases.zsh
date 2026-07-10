@@ -1,3 +1,7 @@
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
 # Directory Info
 alias ll="ls -lFh"
 alias la="ls -lAFh"  # List all files (inlcuding hidden)

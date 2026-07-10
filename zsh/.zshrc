@@ -17,7 +17,6 @@ fpath=($ZSH_CONFIG/functions $fpath)
 # Source all zsh files
 source $ZSH_CONFIG/config.zsh
 source $ZSH_CONFIG/aliases.zsh
-source $ZSH_CONFIG/paths.zsh
 
 # Source local config file specific to machine if it exists
 if [[ -a ~/.localrc ]]
@@ -26,7 +25,6 @@ then
 fi
 
 export PATH="/usr/local/bin:$PATH"
-export PATH="$PATH:/Users/bernat.borras//dev/flutter/bin"
 export PATH="$PATH:/Users/bernat.borras//dev/bin"
 export PATH="$PATH:/Users/bernat.borras/Library/Android/sdk/tools/bin"
 
