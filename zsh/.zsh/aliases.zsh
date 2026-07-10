@@ -48,6 +48,13 @@ function androidAnimationsOff() {
   echo "Done!"
 }
 
+function androidAnimationsFast() {
+  adb shell settings put global window_animation_scale 0.5
+  adb shell settings put global transition_animation_scale 0.5
+  adb shell settings put global animator_duration_scale 0.5
+  echo "Done!"
+}
+
 function androidAnimationsSlow() {
   adb shell settings put global window_animation_scale 5.0
   adb shell settings put global transition_animation_scale 5.0
@@ -105,6 +112,17 @@ function androidTouchPointerOn() {
 function androidTouchPointerOff() {
   adb shell content insert --uri content://settings/system --bind name:s:show_touches --bind value:i:0
   echo done
+}
+
+function androidPaste() {
+  adb shell input text "$(pbpaste)"
+}
+alias androidFontSize1="adb shell settings put system font_scale 1.0"
+alias androidFontSize085="adb shell settings put system font_scale 0.85"
+alias androidFontSize115="adb shell settings put system font_scale 1.15"
+alias androidFontSize130="adb shell settings put system font_scale 1.30"
+function androidFixEmulatorDate() {
+  adb shell su root date "$(date +%m%d%H%M%Y.%S)"
 }
 
 function androidAppInfo() {
