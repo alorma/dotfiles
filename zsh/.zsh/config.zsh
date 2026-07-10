@@ -27,10 +27,16 @@ export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Nvm
-if [[ -a ~/.nvm ]]
-then
+# Nvm — lazy-loaded. nvm.sh costs ~1s to source, so we defer it until nvm/node/npm/npx is actually invoked.
+if [[ -s /opt/homebrew/opt/nvm/nvm.sh ]]; then
   export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  _nvm_load() {
+    unset -f nvm node npm npx
+    source /opt/homebrew/opt/nvm/nvm.sh
+    [[ -s /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm ]] && source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+  }
+  nvm()  { _nvm_load; nvm  "$@" }
+  node() { _nvm_load; node "$@" }
+  npm()  { _nvm_load; npm  "$@" }
+  npx()  { _nvm_load; npx  "$@" }
 fi
