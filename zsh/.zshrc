@@ -44,20 +44,6 @@ export PATH=/opt/homebrew/bin:$PATH
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-function android_screenshot() {
- adb exec-out screencap -p > screenshot.png
- mv -f screenshot.png ~/Desktop/screenshot.png
-}
-
-function androidTalkBackToggle(){
-  output=$(adb shell settings get secure enabled_accessibility_services)
-  if [[ "$output" == "null" ]]; then
-    adb shell settings put secure enabled_accessibility_services com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService
-  else
-    adb shell settings put secure enabled_accessibility_services null
-  fi
-}
-
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 export PATH="$PATH:/usr/bin/ruby"
 
