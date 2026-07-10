@@ -39,7 +39,10 @@ createSymlink $DOTFILES_DIR/zsh/.zsh ~/.zsh
 ./homebrew/install.sh
 
 # oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# powerlevel10k theme (set as ZSH_THEME in zsh/.zsh/config.zsh)
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # zsh syntax highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -47,15 +50,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # zsh gradle completion
 git clone git://github.com/eriwen/gradle-completion ~/.zsh/gradle-completion
 
-# Powerline fonts
-# clone
-git clone https://github.com/powerline/fonts.git
-# install
-cd fonts
-./install.sh
-# clean-up a bit
+# Nerd Fonts (Meslo, matches terminal/iterm2/README.md profile)
+git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh Meslo
 cd ..
-rm -rf fonts
+rm -rf nerd-fonts
 
 # Terminal theme
 open ./terminal/Chalk.terminal
@@ -65,3 +65,9 @@ open ./terminal/Chalk.terminal
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
 # Tell iTerm2 to use the custom preferences in the directory
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+# macOS defaults (optional, intrusive system settings changes)
+read -p "Apply macOS defaults (macos/set-defaults.sh)? [y/n] " apply_defaults
+if [[ "$apply_defaults" =~ ^[Yy]$ ]]; then
+  ./macos/set-defaults.sh
+fi
