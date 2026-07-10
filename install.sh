@@ -71,3 +71,6 @@ read -p "Apply macOS defaults (macos/set-defaults.sh)? [y/n] " apply_defaults
 if [[ "$apply_defaults" =~ ^[Yy]$ ]]; then
   ./macos/set-defaults.sh
 fi
+
+# Java (via sdkman)
+./java/install.sh
