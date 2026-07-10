@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 # Credit to @padilo, many thanks!!
+# Usage: github-open.sh [--pr]
+#   (no args) open branch compare page
+#   --pr      open PR creation page (compare + expand form)
 
 url=$(git remote get-url origin)
 
@@ -14,4 +17,9 @@ host=$(echo $url_no_user | cut -d: -f1)
 project=$(echo $url_no_user | cut -d: -f2 | cut -d. -f1)
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-open "https://$host/$project/compare/$branch?expand=1"
+suffix=""
+if [[ "$1" == "--pr" ]]; then
+  suffix="?expand=1"
+fi
+
+open "https://$host/$project/compare/$branch$suffix"
