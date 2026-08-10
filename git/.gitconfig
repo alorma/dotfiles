@@ -57,7 +57,7 @@
 	# Amends last commit with the index skipping the message editting
 	amend = commit --amend --no-edit
 	# Show local branches ordered by last commit date (thanks to https://twitter.com/viktorklang/status/1214898430964838400):
-	br = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
+	br = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)%(if)%(worktreepath)%(then) %(color:yellow)[%(worktreepath)]%(end)' refs/heads"
 	# Commits current changes with a "WIP" message
 	wip = commit -a -m "WIP"
 	# Soft resets last commit (reverses the command wip)
