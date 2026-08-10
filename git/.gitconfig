@@ -76,7 +76,7 @@
 	# Deletes local merged branches except for master and develop
 	bclean = "!git branch --merged | grep -v \"*\" | grep -v master | grep -v develop | xargs -n 1 git branch -d"
 	# Deletes local branches whose remote is gone. Doesn't include local-only branches. Similar to bclean, but works with squashed branches
-	localprune = "!f() { git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done; }; f"
+	localprune = "!f() { git fetch -p && for branch in `git branch -vv | grep ': gone]' | sed -E 's/^[[:space:]*+]+//' | awk '{print $1}'`; do git branch -D $branch; done; }; f"
 	# Pushes the current branch to a new remote branch in origin and track it
 	pushr = "!f() { git rev-parse --abbrev-ref HEAD | xargs git push -u origin; }; f"
 	# Pulls the main branch and leaves you in the current branch
