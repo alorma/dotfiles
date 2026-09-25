@@ -1,3 +1,6 @@
 *~
 .DS_Store
 taskTree.txt
+**/.claude/settings.local.json
+
+**/.claude/.cc-writes/

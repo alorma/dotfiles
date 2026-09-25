@@ -4,6 +4,12 @@ export EDITOR=vim
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# Skip compaudit security scan on every startup (perf: ~450ms of the ~78% startup cost was compinit/compaudit)
+export ZSH_DISABLE_COMPFIX=true
+
+# Skip oh-my-zsh's network-based update check on every shell start
+zstyle ':omz:update' mode disabled
+
 plugins=(git git-prompt adb colored-man-pages jump zsh-syntax-highlighting sublime)
 
 DEFAULT_USER=$(whoami)

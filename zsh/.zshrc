@@ -18,6 +18,11 @@ fpath=($ZSH_CONFIG/functions $fpath)
 source $ZSH_CONFIG/config.zsh
 source $ZSH_CONFIG/aliases.zsh
 
+# Keep the completion dump compiled to bytecode (much faster to load than the raw file)
+if [[ -s "$ZSH_COMPDUMP" && (! -s "$ZSH_COMPDUMP.zwc" || "$ZSH_COMPDUMP" -nt "$ZSH_COMPDUMP.zwc") ]]; then
+  zcompile "$ZSH_COMPDUMP"
+fi
+
 # Source local config file specific to machine if it exists
 if [[ -a ~/.localrc ]]
 then
@@ -41,9 +46,27 @@ plugins=(zsh-syntax-highlighting git git-prompt)
 
 export PATH=/opt/homebrew/bin:$PATH
 
+# Re-assert Android platform-tools priority over homebrew's older adb
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 export PATH="$PATH:/usr/bin/ruby"
 
+
+# >>> android autocomplete >>>
+#compdef android
+
+_android_complete() {
+    local -a completions
+    local output
+    output=$(android --complete "${words[@]:1:$CURRENT-1}" 2>/dev/null)
+    if [[ -n "$output" ]]; then
+        completions=(${(z)output})
+        compadd -a completions
+    fi
+}
+compdef _android_complete android
+# <<< android autocomplete <<<
