@@ -52,8 +52,8 @@
 	brf = "!git for-each-ref --sort='authordate:iso8601' --format='%(refname:short)%09%(color:green)%(authordate:relative)%(color:reset)' refs/heads | fzf --ansi --tac --no-sort --bind='enter:execute(echo {1} | pbcopy)+abort' --preview='git log --oneline --color=always -10 {1}' --preview-window=right:50%"
 	# Destroys all tracked and untracked changes
 	fire = "!f() { git reset --hard; git clean -f -d; }; f"
-	# Deletes local merged branches (bclean) and branches remote references to deleted branches
-        roomba = "!f() { git localprune; }; f"
+	# Deletes local branches whose remote is gone, skipping any checked out in a worktree
+	roomba = "!f() { git fetch -p && git for-each-ref --format='%(refname:short)|%(upstream:track)|%(worktreepath)' refs/heads | while IFS='|' read -r branch track worktree; do [ \"$track\" = '[gone]' ] || continue; if [ -n \"$worktree\" ]; then echo \"skipping $branch (checked out in $worktree)\" >&2; else git branch -D \"$branch\"; fi; done; }; f"
 	# Amends last commit with the index skipping the message editting
 	amend = commit --amend --no-edit
 	# Show local branches ordered by last commit date (thanks to https://twitter.com/viktorklang/status/1214898430964838400):
@@ -82,9 +82,9 @@
 	# Pulls the main branch and leaves you in the current branch
 	pullmain = "!f() { git switch main && git pull && git switch -; }; f"
 	# Pulls the master branch and leaves you in the current branch
-	pullmaster = "!f() { git switch master && git pull && git switch -; }; f"
+	pullmaster = fetch origin master:master
 	# Pulls the master branch and rebases the current branch on top of it
-	rebmaster = "!f() { git pullmaster && git rebase master; }; f"
+	rebmaster = "!f() { git pullmaster && git rebase master --autostash; }; f"
 	# Pulls the main branch and rebases the current branch on top of it
 	rebmain = "!f() { git pullmain && git rebase main; }; f"
 	# Interactive rebase from master to the current commit

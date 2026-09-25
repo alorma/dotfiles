@@ -21,6 +21,10 @@ brew bundle --file=homebrew/Brewfile  # installs packages/casks
 - `zsh/.zshrc` — entry point; sources `config.zsh` and `aliases.zsh`
 - `zsh/.zsh/aliases.zsh` — all shell aliases and functions (Android, Gradle, git worktrees, etc.)
 - `zsh/.zsh/config.zsh` — shell environment: editor, theme, fzf, nvm (lazy-loaded), Android SDK path
+- `and/and.sh` — entry point for the `and` adb helper CLI; dispatches to `and/commands/*.sh` or shows an fzf menu when run bare
+- `and/commands/` — one script per adb chore (`animations`, `screenshot`, `touch-pointer`, `font-size`, `talkback`, `navigation`, `paste`, `current-activity`, `fix-date`); each works standalone
+- `and/lib/common.sh` — shared UI helpers for the `and` CLI (colours, fzf styling, `pick`, `banner`, spinners)
+- `and/lib/device.sh` — adb device discovery/selection helpers shared by the `and` commands
 - `git/.gitconfig` — git aliases, diff-so-fancy pager, SSH commit signing via 1Password
 - `git/.gitignore_global` — global gitignore (includes machine-local files like `.claude/settings.local.json`)
 - `git/github-open.sh` — opens the GitHub compare/PR page for the current branch; used by `git compare`/`git pr`
@@ -39,8 +43,9 @@ Add machine-specific overrides to `~/.localrc` — it is sourced automatically i
 | `g sw` | `git switch` |
 | `g wip` / `g unwip` | quick WIP commit / soft reset |
 | `g pushr` | push current branch to origin and track |
-| `g roomba` | delete local branches whose remote is gone |
-| `g rebmaster` / `g rebmain` | pull master/main and rebase current branch on top |
+| `g roomba` | delete local branches whose remote is gone, skipping any checked out in a worktree |
+| `g pullmaster` | fetch `master` into the local `master` ref without switching branches |
+| `g rebmaster` / `g rebmain` | pull master/main and rebase current branch on top (`rebmaster` autostashes) |
 | `g fixup <ref>` | amend an older commit interactively |
 | `g pr` | push branch and open a GitHub PR |
 | `g compare` | push branch and open the GitHub compare page |
@@ -49,9 +54,21 @@ Add machine-specific overrides to `~/.localrc` — it is sourced automatically i
 ## Key shell functions (from `aliases.zsh`)
 
 - `gwt <branch>` / `gwtrm [-f]` — create/switch to a git worktree for a branch (local, remote, or new); remove the current worktree and its branch
-- `androidAnimations{On,Off,Fast,Slow}` — toggle Android emulator animation scales via adb
-- `androidScreenshot [delay]` — capture screenshot from all connected devices to `~/Downloads`, with an optional countdown
-- `androidTalkBackToggle` — toggle TalkBack accessibility service
-- `androidPaste` — type the clipboard contents into the connected device via adb
-- `androidFontSize{1,085,115,130}` — set system font scale
-- `androidFixEmulatorDate` — sync emulator date/time to the host's
+- `and [command] [args]` — wraps `and/and.sh` (see below); adds the resolved one-liner to shell history when picked interactively
+- `androidAppInfo <package>` / `openDeepLink <url>` — open the app details screen / a deep link via adb
+
+## The `and` adb CLI
+
+`and` (`and/and.sh`) is the single entry point for day-to-day adb chores. Run it bare for an fzf menu, or pass a subcommand to skip the prompt:
+
+- `and animations {on,off,fast,slow}` — window/transition/animator scales
+- `and screenshot [delay]` — capture every connected device to `~/Downloads`, with an optional countdown; uses the `android` CLI's `screen capture` when installed, falling back to plain `adb exec-out screencap`
+- `and touch-pointer {on,off}` — show/hide touch indicators
+- `and font-size <scale>` — system font scale
+- `and talkback toggle` — toggle the TalkBack accessibility service
+- `and navigation {gestures,buttons}` — switch nav bar mode
+- `and paste` — type the clipboard contents into the device
+- `and current-activity` — print the foreground activity class
+- `and fix-date` — sync the emulator clock to the host
+
+Each command also works standalone (`and/commands/<name>.sh`). Shared UI (colours, fzf menu, spinners) lives in `and/lib/common.sh`; device discovery in `and/lib/device.sh`.
