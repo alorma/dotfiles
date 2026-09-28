@@ -31,6 +31,7 @@ brew bundle --file=homebrew/Brewfile  # installs packages/casks
 - `homebrew/Brewfile` — managed packages/casks, kept in sync with what's actually installed
 - `java/install.sh` — installs sdkman and a pinned Java version
 - `macos/set-defaults.sh` — interactive macOS system settings changes
+- `logi/install.sh` — installs the Logi Options wake fix: symlinks `logi/wakeup.sh` to `~/.wakeup` (run by sleepwatcher on system wake) and loads the `local.displaywake-watcher` LaunchAgent running `logi/displaywake-watcher.sh` (restarts `LogiMgrDaemon` on display wake, since Amphetamine blocks real system sleep)
 
 ## Machine-specific config
 

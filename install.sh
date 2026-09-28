@@ -74,3 +74,9 @@ fi
 
 # Java (via sdkman)
 ./java/install.sh
+
+# Logi Options daemon auto-restart on wake (optional, only useful with a Logitech mouse)
+read -p "Install Logi Options wake watcher (logi/install.sh)? [y/n] " install_logi
+if [[ "$install_logi" =~ ^[Yy]$ ]]; then
+  ./logi/install.sh
+fi
