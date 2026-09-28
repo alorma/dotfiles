@@ -38,6 +38,8 @@ alias npmr='npm run'
 ## Application shortcuts
 alias stree='git rev-parse --show-toplevel | xargs open -a SourceTree' # Prefer installing the command tools instead
 alias androidstudio="open -a /Applications/Android\ Studio.app"
+# Logi Options daemon sometimes stops handling MX Master extra buttons; launchd relaunches it (KeepAlive)
+alias logifix='/usr/bin/pkill -9 -i LogiMgrDaemon'
 
 ## My most used command
 alias meh='echo "¯\_(シ)_/¯" | pbcopy && echo "¯\_(シ)_/¯ copied"'

@@ -56,6 +56,7 @@ Add machine-specific overrides to `~/.localrc` — it is sourced automatically i
 - `gwt <branch>` / `gwtrm [-f]` — create/switch to a git worktree for a branch (local, remote, or new); remove the current worktree and its branch
 - `and [command] [args]` — wraps `and/and.sh` (see below); adds the resolved one-liner to shell history when picked interactively
 - `androidAppInfo <package>` / `openDeepLink <url>` — open the app details screen / a deep link via adb
+- `logifix` — kill `LogiMgrDaemon` so launchd relaunches it, when the MX Master extra buttons stop responding
 
 ## The `and` adb CLI
 
