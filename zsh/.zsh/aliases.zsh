@@ -58,9 +58,23 @@ function androidAppInfo() {
 }
 
 function openDeepLink() {
-  readonly url=${1:?"The url must be specified."}
-  adb shell am start -a android.intent.action.VIEW -d $url
-  echo "Opening..."
+  local url="$1"
+  [[ -z "$url" ]] && { echo "Usage: openDeepLink <url> [package]"; return 1 }
+
+  local -a devices
+  devices=(${(f)"$(adb devices | awk 'NR>1 && $2=="device" {print $1}')"})
+
+  local serial
+  case ${#devices} in
+    0) echo "No device connected (or it is offline/unauthorized)"; return 1 ;;
+    1) serial=$devices[1] ;;
+    *) PS3="Device: "
+       select serial in $devices; do [[ -n $serial ]] && break; done ;;
+  esac
+
+  echo "Opening on $serial..."
+  adb -s "$serial" shell am start -a android.intent.action.VIEW \
+    -d "'$url'" ${2:+-p "$2"}
 }
 
 

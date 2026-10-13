@@ -70,3 +70,11 @@ _android_complete() {
 }
 compdef _android_complete android
 # <<< android autocomplete <<<
+
+# Claude Code amb el compte personal (config separada, sense Bedrock)
+_claude_personal_env='env -u CLAUDE_CODE_USE_BEDROCK -u AWS_PROFILE -u AWS_REGION -u CLAUDE_CODE_SUBAGENT_MODEL -u ANTHROPIC_DEFAULT_SONNET_MODEL -u ANTHROPIC_DEFAULT_HAIKU_MODEL -u ANTHROPIC_DEFAULT_OPUS_MODEL -u ANTHROPIC_DEFAULT_FABLE_MODEL CLAUDE_CONFIG_DIR=$HOME/.claude-personal'
+alias claude-personal="$_claude_personal_env claude"
+# Desvinculada del terminal (sobreviu si el tanques)
+claude-app-personal() {
+  eval "nohup $_claude_personal_env /Applications/Claude.app/Contents/MacOS/Claude > /dev/null 2>&1 &!"
+}
