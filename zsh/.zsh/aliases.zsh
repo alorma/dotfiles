@@ -71,6 +71,7 @@ function openDeepLink() {
     *) PS3="Device: "
        select serial in $devices; do [[ -n $serial ]] && break; done ;;
   esac
+  [[ -z "$serial" ]] && return 1
 
   echo "Opening on $serial..."
   adb -s "$serial" shell am start -a android.intent.action.VIEW \
