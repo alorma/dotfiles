@@ -1,6 +1,7 @@
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+# emulator/ és l'emulador actual; tools/ és l'SDK Tools obsolet i el seu `emulator` no arrenca els AVD nous
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH
 
 unalias and 2>/dev/null
 # Runs a script and adds the command it resolved to shell history.

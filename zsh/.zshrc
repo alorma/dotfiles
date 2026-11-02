@@ -31,7 +31,6 @@ fi
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/dev/bin"
-export PATH="$PATH:$HOME/Library/Android/sdk/tools/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
